@@ -1,0 +1,94 @@
+# Input:  A string Pattern
+# Output: The reverse of Pattern
+def Reverse(Pattern):
+    # your code here
+    reverse_str = ""
+    for char in Pattern:
+        reverse_str=char+reverse_str
+    return reverse_str    
+
+
+
+# Input:  A DNA string Pattern
+# Output: The complementary string of Pattern (with every nucleotide replaced by its complement).
+def Complement(Pattern):
+    # your code here
+    complement_str=''
+    for char in Pattern:
+        if char=='A':
+            complement_str+='T'
+        elif char=='T':
+            complement_str+='A'
+        elif char=='C':
+            complement_str+='G'    
+        elif char=='G':
+            complement_str+='C'    
+    return complement_str       
+            
+  
+  
+# Input:  A DNA string Pattern
+# Output: The reverse complement of Pattern
+def ReverseComplement(Pattern):   
+    # your code here
+    reversed = Reverse(Pattern)
+    reversed_and_complemented = Complement(reversed)
+    #print(reversed_and_complemented)
+    return reversed_and_complemented
+
+# Copy your Reverse() function here.
+def Reverse(Pattern):
+    reverse_str = ""
+    for char in Pattern:
+        reverse_str=char+reverse_str
+    return reverse_str    
+
+# Copy your Complement() function here.
+def Complement(Pattern):
+    complement_str=''
+    for char in Pattern:
+        if char=='A':
+            complement_str+='T'
+        elif char=='T':
+            complement_str+='A'
+        elif char=='C':
+            complement_str+='G'    
+        elif char=='G':
+            complement_str+='C'    
+    return complement_str       
+
+
+
+
+# fill in your PatternMatching() function along with any subroutines that you need.
+def PatternMatching(Pattern, Genome):
+    positions = [] # output variable
+    # your code here
+    for i in range(len(Genome)-len(Pattern)+1): # -len(Pattern) saves time by not having to go through entire genome, if there aren't enough spaces in genome left that the pattern could fit into
+        if Genome[i:i+len(Pattern)] == Pattern:
+            positions.append(i)
+    return positions
+         
+       
+
+
+
+# Copy your PatternMatching function below this line.
+def PatternMatching(Pattern, Genome):
+    positions = [] # output variable
+    for i in range(len(Genome)-len(Pattern)+1): # -len(Pattern) saves time by not having to go through entire genome, if there aren't enough spaces in genome left that the pattern could fit into
+        if Genome[i:i+len(Pattern)] == Pattern:
+            positions.append(i)
+    return positions
+
+# The following lines will automatically read in the Vibrio cholerae genome for you and store it in a variable named v_cholerae
+import sys                              # needed to read the genome
+input = sys.stdin.read().splitlines()   #
+v_cholerae = input[1]                   # store the genome as 'v_cholerae'
+
+# Call PatternMatching with Pattern equal to "CTTGATCAT" and Genome equal to v_cholerae,
+# and store the output as a variable called positions
+positions = PatternMatching("CTTGATCAT",v_cholerae)
+
+# print the positions variable
+print(positions)
