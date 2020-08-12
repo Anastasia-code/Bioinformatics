@@ -1,0 +1,22 @@
+# Input:  A String Genome
+# Output: The skew array of Genome as a list.
+def SkewArray(Genome):
+    # your code here
+    skew=[0]
+    for i in range(len(Genome)):
+        if Genome[i]=="A" or Genome[i]=="T":
+            #skew[i+1]=skew[i]
+            skew.append(skew[i])
+        elif Genome[i]=="G":
+            #skew[i+1]=skew[i]+1
+            skew.append(skew[i]+1)
+        elif Genome[i]=="C":
+            #skew[i+1]=skew[i]-1
+            skew.append(skew[i]-1)
+    return skew
+        
+        
+
+
+
+
